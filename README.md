@@ -1,11 +1,6 @@
 # Administrador de Tareas Simple
 
-## Descripción
-Administrador de tareas básico construido con **Laravel 12 (backend)** y **Vue 3 (frontend)**. Permite:
-- Ver una lista de tareas
-- Crear una nueva tarea
-- Marcar una tarea como completada
-- Eliminar una tarea
+Este proyecto es un administrador de tareas desarrollado con Laravel 12 (backend) y Vue 3 (frontend).
 
 ## Requisitos
 - PHP >= 8.2
@@ -13,20 +8,24 @@ Administrador de tareas básico construido con **Laravel 12 (backend)** y **Vue 
 - Node.js y NPM
 - MySQL
 
-## Instalación
+## Instalación y configuración
 
-### 1. Clona el repositorio o descomprime el archivo
+### 1. Clona el repositorio
+```sh
+git clone https://github.com/Jhonjr2/Task-vue-laravel.git
+cd Task-vue-laravel
+```
 
 ### 2. Configura el backend (Laravel)
 ```sh
 cd task-manager-api
 cp .env.example .env
-# Configura tu conexión a MySQL en el archivo .env
+# Edita .env con tus credenciales de MySQL
 composer install
 php artisan key:generate
 ```
 
-### 3. Migraciones y seeders
+### 3. Ejecuta migraciones y seeders
 ```sh
 php artisan migrate --seed
 ```
@@ -43,36 +42,19 @@ npm install
 npm run dev
 ```
 
-### 6. Accede a la app
-- Frontend: [http://localhost:5173](http://localhost:5173)
-- API: [http://localhost:8000/api/tasks](http://localhost:8000/api/tasks)
+### 6. Accede a la aplicación
+- Frontend: http://localhost:5173
+- API: http://localhost:8000/api/tasks
 
-## Endpoints API
-
-| Método | Endpoint             | Descripción                        |
-|--------|----------------------|------------------------------------|
-| GET    | /api/tasks           | Obtener todas las tareas           |
-| POST   | /api/tasks           | Crear una nueva tarea              |
-| PUT    | /api/tasks/{id}      | Actualizar/alternar tarea          |
-| DELETE | /api/tasks/{id}      | Eliminar una tarea                 |
+## ¿Cómo verificar que funciona?
+- Crea, marca como completada y elimina tareas desde la interfaz web.
+- Puedes consultar los endpoints de la API usando Postman o tu navegador.
+- Si tienes algún problema, revisa el archivo `.env` y los logs en `storage/logs/laravel.log`.
 
 ## Estructura de la base de datos
-Tabla: `tasks`
-- id (PK)
+La tabla `tasks` contiene:
+- id (clave primaria)
 - title (string)
-- description (text, nullable)
-- is_completed (boolean, default false)
+- description (texto, opcional)
+- is_completed (booleano, por defecto falso)
 - created_at, updated_at (timestamps)
-
-## Notas
-- El frontend usa Axios para consumir la API.
-- El backend responde en formato JSON.
-- Puedes modificar la conexión a la base de datos en `.env`.
-
-## Bonus
-- Validación de formulario en frontend.
-- Mensajes de error en operaciones fallidas.
-- UI y UX limpias.
-
----
-¡Listo para entregar! Si tienes dudas o problemas, revisa los archivos `.env` y los logs de Laravel.
